@@ -42,6 +42,7 @@ button {
 
 .wrapper {
   width: 100%;
+  height: 100vh;
   padding-top: 5rem;
   padding-bottom: 5rem;
   background-repeat: no-repeat;
@@ -83,7 +84,7 @@ h1 {
   font-size: 3.6rem;
   font-weight: 700;
 }
-.btn{
+.btn {
   border: none;
   background: transparent;
   cursor: pointer;
@@ -110,6 +111,8 @@ h1 {
   gap: 2.4rem;
   border-radius: 1rem;
   margin-bottom: 2.4rem;
+  position: relative;
+  bottom: 10px;
 }
 .wrapper.dark .form-control {
   background-color: var(--very-dark-desaturated-blue);
@@ -244,13 +247,21 @@ h1 {
 
 /* Footer Component */
 footer {
-  line-height: 1.5;
   text-align: center;
 }
+.attribution,
 a {
-  color: var(--gradient-end);
+  color: var(--dark-dark-grayish-blue);
+}
+a:link {
+  text-decoration: none;
 }
 a:visited {
-  color: var(--light-grayish-blue);
+  text-decoration: none;
 }
-
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}

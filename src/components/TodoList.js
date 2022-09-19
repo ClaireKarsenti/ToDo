@@ -20,7 +20,7 @@ const TodoList = ({
       {/* The todo list */}
       {list.length > 0 && (
         <div>
-          <TodoItems tasks={list} removeItem={removeItem} />
+          <TodoItems tasks={list} setList={setList} removeItem={removeItem} />
 
           <div className="todo-footer">
             <span className="btn">

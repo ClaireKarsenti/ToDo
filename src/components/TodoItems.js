@@ -4,14 +4,15 @@ import CrossIcon from '../assets/icons/icon-cross.svg';
 import CheckIcon from '../assets/icons/icon-check.svg';
 
 const TodoItems = ({ tasks, removeItem, list, setList }) => {
-  const [checkTodo, setCheckTodo] = useState(false);
-
-  const checked = () => {
-    setCheckTodo({ ...checkTodo, done: !checkTodo.done });
-    const updatedTodos = list.map((item) =>
-      item.id === tasks.id ? { ...list, completed: !item.completed } : list
-    );
+  const checked = (id) => {
+    const updatedTodos = [...tasks];
+    updatedTodos.find(item => {
+       if (item.id === id) { 
+        item.completed = !item.completed
+      }
+    })
     setList(updatedTodos);
+    localStorage.setItem('list', JSON.stringify(updatedTodos));
   };
 
   return (
@@ -20,21 +21,11 @@ const TodoItems = ({ tasks, removeItem, list, setList }) => {
         const { id, title, completed } = item;
         return (
           <ul className="todo-list" key={id}>
-            <li key={index} className={checkTodo.done ? 'done' : ''}>
-              {/*<label htmlFor={`todoCheckbox-${id}`}>
-                Completed Checkbox
-              </label>*/}
-              <input
-                id={`todoCheckbox-${id}`}
-                type="checkbox"
-                name="completed"
-                //defaultChecked
-                checked={checkTodo}
-                onChange={() => setCheckTodo(!checkTodo)}
-              />
+            <li key={index} className={completed ? 'done' : ''}>
+              <label htmlFor={`todoCheckbox-${id}`}>Completed Checkbox</label>
               <div className="checkbox-border-wrap">
                 <span className="checkbox" onClick={() => checked(id)}>
-                  {checkTodo ? <img src={CheckIcon} alt="done" /> : ''}
+                  {completed && <img src={CheckIcon} alt="done" />}
                 </span>
               </div>
               {title}

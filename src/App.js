@@ -1,46 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 //COMPONENTS
-import TodoList from "./components/TodoList";
-import TodoForm from "./components/TodoForm";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-import "./App.css";
-
-const getLocalStorage = () => {
-  let list = localStorage.getItem("list");
-  if (list) {
-    return (list = JSON.parse(localStorage.getItem("list")));
-  } else {
-    return [];
-  }
-};
+import './App.css';
 
 function App() {
-  const [todoForm, setTodoForm] = useState("");
-  const [list, setList] = useState(getLocalStorage());
+  const [list, setList] = useState([]);
   const [themeDark, setThemeDark] = useState(true);
-  const [filterStatus, setFilterStatus] = useState("all");
+  const [filterStatus, setFilterStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState(list);
 
   const removeItem = (id) => {
     setList(list.filter((item) => item.id !== id));
   };
 
-  const themeClass = themeDark ? "dark" : "light";
+  const themeClass = themeDark ? 'dark' : 'light';
 
-  useEffect(() => {
-    localStorage.setItem("list", JSON.stringify(list));
-  }, [list]);
+  // useEffect(() => {
+  //   let list = localStorage.getItem('list');
+  //   if (list) {
+  //    setList(list)
+  //   }
+  // }, []);
 
   useEffect(() => {
     const handleFilter = () => {
       switch (filterStatus) {
-        case "active":
+        case 'active':
           return setFilteredTodos(list.filter((todo) => !todo.done));
 
-        case "completed":
+        case 'completed':
           return setFilteredTodos(list.filter((todo) => todo.done));
 
         default:
@@ -55,12 +48,7 @@ function App() {
       <div className="container">
         <Header themeDark={themeDark} setThemeDark={setThemeDark} />
         <main>
-          <TodoForm
-            todoForm={todoForm}
-            setTodoForm={setTodoForm}
-            list={list}
-            setList={setList}
-          />
+          <TodoForm list={list} setList={setList} />
           <TodoList
             list={list}
             setList={setList}
@@ -70,7 +58,7 @@ function App() {
             setFilterStatus={setFilterStatus}
           />
         </main>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

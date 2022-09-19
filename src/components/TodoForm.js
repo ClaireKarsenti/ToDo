@@ -1,24 +1,29 @@
-import React from "react";
+import React, {useState} from 'react';
+import CheckIcon from '../assets/icons/icon-check.svg';
 
-const TodoForm = ({ todoForm, setTodoForm, list, setList }) => {
+const TodoForm = ({ setTodoForm, list, setList }) => {
+  const [completed, setCompleted] = useState(false)
+  const [title, setTitle] = useState('')
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (todoForm) {
       const newItem = {
         id: new Date().getTime().toString(), //custom id
-        title: todoForm,
-        completed: false,
+        title,
+        completed,
       };
       // Every time a new item is added to the list, the list is updated accordingly
       setList([...list, newItem]);
-      setTodoForm("");
-    }
-  };
+      setTitle('')
+  }
+  
 
   return (
     <div className="form-control">
       <div className="checkbox-border-wrap">
-        <span className="checkbox"></span>
+        <span onClick={() => setCompleted(!completed)} className="checkbox">
+          {completed ? <img src={CheckIcon} alt="done" /> : ''}
+        </span>
       </div>
       <form className="todo-form" onSubmit={handleSubmit}>
         <input
@@ -26,8 +31,8 @@ const TodoForm = ({ todoForm, setTodoForm, list, setList }) => {
           name="todo-input"
           className="todo-input"
           placeholder="Create a new todo..."
-          value={todoForm}
-          onChange={(e) => setTodoForm(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </form>
     </div>
