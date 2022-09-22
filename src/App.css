@@ -92,6 +92,10 @@ h1 {
 .btn:focus {
   outline: none;
 }
+.btn-container img {
+  position: relative;
+  right: -38rem;
+}
 .wrapper.dark .btn {
   color: var(--dark-dark-grayish-blue);
 }
@@ -177,7 +181,6 @@ h1 {
 }
 .todo-list-section .info-text {
   padding: 2.4rem;
-  border-bottom: 0.1rem solid var(--very-light-grayish-blue);
 }
 .todo-list {
   list-style: none;

@@ -1,17 +1,18 @@
-import React from "react";
-import Sun from "../assets/icons/icon-moon.svg";
-import Moon from "../assets/icons/icon-sun.svg";
+import React from 'react';
+import Sun from '../assets/icons/icon-moon.svg';
+import Moon from '../assets/icons/icon-sun.svg';
 
-const Header = ({ themeDark, setThemeDark }) => {
-  const switchThemeIcon = themeDark ? Moon : Sun;
+import { useTheme } from '../utils/hook/index';
 
-  const changeTheme = () => {
-    setThemeDark(!themeDark);
-  };
+const Header = () => {
+  const { darkMode, toggleDarkMode } = useTheme();
+
+  const switchThemeIcon = darkMode ? Moon : Sun;
+
   return (
     <header>
       <h1>TODO</h1>
-      <button className="btn" onClick={changeTheme}>
+      <button className="btn" onClick={() => toggleDarkMode()}>
         <img src={switchThemeIcon} alt="Theme" />
       </button>
     </header>

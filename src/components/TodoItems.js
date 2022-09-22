@@ -6,17 +6,17 @@ import CheckIcon from '../assets/icons/icon-check.svg';
 const TodoItems = ({ tasks, removeItem, list, setList }) => {
   const checked = (id) => {
     const updatedTodos = [...tasks];
-    updatedTodos.find(item => {
-       if (item.id === id) { 
-        item.completed = !item.completed
+    updatedTodos.find((item) => {
+      if (item.id === id) {
+        item.completed = !item.completed;
       }
-    })
+    });
     setList(updatedTodos);
     localStorage.setItem('list', JSON.stringify(updatedTodos));
   };
 
   return (
-    <section className="todo-list-section">
+    <section>
       {tasks?.map((item, index) => {
         const { id, title, completed } = item;
         return (
@@ -29,8 +29,9 @@ const TodoItems = ({ tasks, removeItem, list, setList }) => {
                 </span>
               </div>
               {title}
+
+              {/* Delete button */}
               <div className="btn-container">
-                {/* Delete button */}
                 <button
                   type="button"
                   className="btn"
