@@ -1,8 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import Sun from '../assets/icons/icon-moon.svg';
 import Moon from '../assets/icons/icon-sun.svg';
 
-import { useTheme } from '../utils/hook/index';
+// @ts-expect-error
+import { useTheme } from '../utils/hook/index.tsx';
 
 const Header = () => {
   const { darkMode, toggleDarkMode } = useTheme();

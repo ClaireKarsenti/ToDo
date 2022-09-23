@@ -1,4 +1,10 @@
-import React, { useEffect, useState, createContext } from 'react';
+import * as React from 'react';
+import { useEffect, useState, createContext } from 'react';
+
+
+interface DarkModeProvider {
+  children: any;
+}
 
 export const defaultState = {
   darkMode: true,
@@ -7,13 +13,13 @@ export const defaultState = {
 
 export const DarkModeContext = createContext(defaultState);
 
-export const DarkModeProvider = ({ children }) => {
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const DarkModeProvider: React.FC<DarkModeProvider> = ({ children }) => {
   const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
     // localStorage.setItem('darkMode', JSON.stringify(darkMode));
     setDarkMode(!darkMode);
-
   };
 
   // useEffect(() => {
@@ -25,8 +31,7 @@ export const DarkModeProvider = ({ children }) => {
 
   return (
     <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
-        {children}
-    
+      {children}
     </DarkModeContext.Provider>
   );
 };

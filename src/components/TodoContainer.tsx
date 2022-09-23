@@ -1,20 +1,24 @@
-import React, { useState, useEffect, useContext } from 'react';
+import * as React from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 //COMPONENTS
-import TodoList from './TodoList';
-import TodoForm from './TodoForm';
-import Header from './Header';
-import Footer from './Footer';
-
-import { DarkModeContext } from '../utils/context/index';
-
+// @ts-expect-error
+import TodoList from './TodoList.tsx';
+// @ts-expect-error
+import TodoForm from './TodoForm.tsx';
+// @ts-expect-error
+import Header from './Header.tsx';
+// @ts-expect-error
+import Footer from './Footer.tsx';
+// @ts-expect-error
+import { DarkModeContext } from '../utils/context/index.tsx';
 
 const TodoContainer = () => {
   const [list, setList] = useState([]);
   const [filterStatus, setFilterStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState(list);
 
-  const removeItem = (id) => {
+  const removeItem = (id: any) => {
     setList(list.filter((item) => item.id !== id));
   };
 
@@ -42,7 +46,7 @@ const TodoContainer = () => {
   //    setList(list)
   //   }
   // }, []);
-  
+
   return (
     <div className={darkMode ? 'wrapper dark' : 'wrapper light'}>
       <div className="container">
@@ -62,6 +66,6 @@ const TodoContainer = () => {
       </div>
     </div>
   );
-};;
+};
 
 export default TodoContainer;

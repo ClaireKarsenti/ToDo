@@ -1,8 +1,23 @@
-import React from 'react';
-import TodoItems from './TodoItems';
-import TodoFilterButton from './TodoFilterButton';
+import * as React from 'react';
+import { FC } from 'react';
 
-const TodoList = ({
+// @ts-expect-error
+import TodoItems from './TodoItems.tsx';
+// @ts-expect-error
+import TodoFilterButton from './TodoFilterButton.tsx';
+
+import { Todos as TODOS_TYPES } from '../utils/types';
+
+interface TodoListProps {
+  todos: TODOS_TYPES[]; //!!!!!!!!!! A revoir;
+  list: any;
+  setList: any;
+  removeItem: any;
+  filterStatus: string;
+  setFilterStatus: any;
+}
+
+const TodoList: FC<TodoListProps> = ({
   list,
   setList,
   removeItem,
@@ -11,7 +26,7 @@ const TodoList = ({
 }) => {
   //To delete all the completed tasks
   const clearCompleted = () => {
-    setList(list.filter((todo) => !todo.completed));
+    setList(list.filter((todo: { completed: any }) => !todo.completed));
     setFilterStatus('all');
   };
 
@@ -19,12 +34,12 @@ const TodoList = ({
 
   return (
     <>
-      <div className='todo-list-section'>
+      <div className="todo-list-section">
         {/* The todo list */}
         {list.length < 1 ? (
           <p className="info-text">There's no {noTodoText}.</p>
         ) : (
-          <ul >
+          <ul>
             <TodoItems tasks={list} setList={setList} removeItem={removeItem} />
 
             <div className="todo-footer">
@@ -44,7 +59,9 @@ const TodoList = ({
 
               <div className="control-btn">
                 {/* Clear button appears only when there is item in the list */}
-                <button className='btn' onClick={clearCompleted}>clear completed</button>
+                <button className="btn" onClick={clearCompleted}>
+                  clear completed
+                </button>
               </div>
             </div>
           </ul>
