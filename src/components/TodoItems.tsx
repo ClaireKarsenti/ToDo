@@ -7,7 +7,7 @@ import CheckIcon from '../assets/icons/icon-check.svg';
 import { Todos as TODOS_TYPES } from '../utils/types';
 
 interface TodoItemsTypes {
-  todos: TODOS_TYPES[] //!!!!!!!!!! A revoir;
+  todos: TODOS_TYPES[]; //!!!!!!!!!! A revoir;
   tasks: any;
   removeItem: any;
   setList: any;

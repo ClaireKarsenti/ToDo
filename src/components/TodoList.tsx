@@ -43,13 +43,13 @@ const TodoList: FC<TodoListProps> = ({
             <TodoItems tasks={list} setList={setList} removeItem={removeItem} />
 
             <div className="todo-footer">
-              <span className="btn">
+              <button className="btn">
                 {list.length === 1 ? (
                   <div>{list.length} item left</div>
                 ) : (
                   <div>{list.length} items left</div>
                 )}
-              </span>
+              </button>
               <div className="control-btn group filter-control-for-desktop">
                 <TodoFilterButton
                   filterStatus={filterStatus}

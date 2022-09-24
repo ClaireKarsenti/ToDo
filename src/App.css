@@ -31,7 +31,6 @@
 html {
   font-size: 62.5%;
 }
-
 body,
 input[type='text'],
 button {
@@ -53,7 +52,7 @@ button {
 .wrapper.light {
   background-color: var(--very-light-gray);
   background-image: url(./assets/images/bg-desktop-light.jpg);
-  color: var(--dark-grayish-blue);
+  color: var(--very-dark-grayish-blue);
 }
 .wrapper.light input[type='checkbox'],
 .wrapper.light button {
@@ -64,12 +63,14 @@ button {
 .wrapper.dark {
   background-color: var(--very-dark-blue);
   background-image: url(./assets/images/bg-desktop-dark.jpg);
-  color: var(--dark-dark-grayish-blue);
+  color: var(--dark-light-grayish-blue);
 }
 
 .container {
   max-width: 54rem;
   margin: 0 auto;
+  position: relative;
+  top: 10px;
 }
 
 /* Header Component */
@@ -83,19 +84,23 @@ header {
 h1 {
   font-size: 3.6rem;
   font-weight: 700;
+  letter-spacing: 1.4rem;
 }
 .btn {
   border: none;
   background: transparent;
   cursor: pointer;
+  text-transform: capitalize;
 }
 .btn:focus {
   outline: none;
 }
-.btn-container img {
-  position: relative;
-  right: -38rem;
+.btn-container {
+  margin-left: 46rem; /* ???????????? */
+  position: fixed;
+  /* display: none; */
 }
+
 .wrapper.dark .btn {
   color: var(--dark-dark-grayish-blue);
 }
@@ -113,10 +118,8 @@ h1 {
   align-items: center;
   padding: 2.4rem;
   gap: 2.4rem;
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   margin-bottom: 2.4rem;
-  position: relative;
-  bottom: 10px;
 }
 .wrapper.dark .form-control {
   background-color: var(--very-dark-desaturated-blue);
@@ -139,6 +142,10 @@ h1 {
   align-items: center;
   cursor: pointer;
 }
+.wrapper.dark span.checkbox {
+  border: 0.5px solid var(--dark-very-dark-grayish-blue-hover);
+}
+
 .wrapper.dark .checkbox,
 .wrapper.dark .todo-input {
   background-color: var(--very-dark-desaturated-blue);
@@ -156,6 +163,11 @@ h1 {
   font-size: 1.8rem;
   border: none;
 }
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--dark-grayish-blue);
+  opacity: 0.7; /* Firefox */
+}
 .todo-input:focus {
   outline: none;
 }
@@ -164,14 +176,13 @@ h1 {
 }
 
 /* TodoList Component */
-
 .todo-list-section {
   background-color: white;
-  border-radius: 1rem;
+  border-radius: 0.6rem;
   margin-bottom: 4.8rem;
-  box-shadow: -1px 5px 20px 10px rgba(157, 162, 235, 0.3);
-  -webkit-box-shadow: -1px 5px 20px 10px rgba(157, 162, 235, 0.3);
-  -moz-box-shadow: -1px 5px 20px 10px rgba(157, 162, 235, 0.3);
+  box-shadow: -1px 5px 20px 10px rgba(197, 200, 241, 0.3);
+  -webkit-box-shadow: -1px 5px 20px 10px rgba(197, 200, 241, 0.3);
+  -moz-box-shadow: -1px 5px 20px 10px rgba(197, 200, 241, 0.3);
 }
 .wrapper.dark .todo-list-section {
   background-color: var(--very-dark-desaturated-blue);
@@ -194,12 +205,19 @@ h1 {
   padding-left: 2.4rem;
   padding-right: 2.4rem;
   gap: 2.4rem;
-  border-bottom: 0.1rem solid var(--very-light-grayish-blue);
 }
+/* .todo-list li:first-child {
+  border-top: none;
+} */
 .todo-list li:last-child {
   border-bottom: none;
 }
+li {
+  border-top: 0.1rem solid var(--very-light-grayish-blue);
+  border-bottom-color: var(--dark-very-dark-grayish-blue-hover);
+}
 .wrapper.dark li {
+  border-top: 0.1rem solid var(--dark-very-dark-grayish-blue-hover);
   border-bottom-color: var(--dark-very-dark-grayish-blue-hover);
 }
 .todo-list li label,
@@ -210,6 +228,7 @@ h1 {
   background: transparent;
 }
 
+/* ????????????????????? */
 .todo-list li.done .checkbox {
   background-image: linear-gradient(
     to bottom right,
@@ -217,14 +236,13 @@ h1 {
     var(--gradient-end)
   );
 }
-.todo-list li.done p {
+.todo-list li.done {
   color: var(--light-grayish-blue);
   text-decoration-line: line-through;
 }
-.wrapper.dark .todo-list li.done p {
+.wrapper.dark .todo-list li.done {
   color: var(--dark-very-dark-grayish-blue);
 }
-
 .todo-footer {
   display: flex;
   justify-content: space-between;
@@ -239,17 +257,16 @@ h1 {
   display: flex;
   gap: 1rem;
 }
-.btn.active,
-.wrapper.dark .btn.active {
-  color: var(--gradient-start);
-  font-weight: 700;
-}
-.btn {
-  text-transform: capitalize;
+.wrapper.dark .btn.active,
+.wrapper.light .btn.active {
+  color: rgb(24, 99, 238);
+  font-weight: 500;
 }
 
 /* Footer Component */
 footer {
+  justify-self: flex-end;
+  vertical-align: bottom;
   text-align: center;
 }
 .attribution,
