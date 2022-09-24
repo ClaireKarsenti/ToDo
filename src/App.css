@@ -1,12 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/*
+=============== 
+Variables
+===============
+*/
 :root {
   /* Light Theme */
   --very-light-gray: hsl(0, 0%, 98%);
@@ -26,9 +22,26 @@
   --dark-very-dark-grayish-blue: hsl(233, 14%, 35%);
   --dark-very-dark-grayish-blue-hover: hsl(237, 14%, 26%);
 }
+/*
+=============== 
+Global Styles
+===============
+*/
 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 html {
   font-size: 62.5%;
+}
+main {
+  min-height: 100vh; /* to fix the height even ig the todo list is empty*/
 }
 body,
 input[type='text'],
@@ -52,7 +65,7 @@ button {
   background-color: var(--very-light-gray);
   background-image: url(./assets/images/bg-desktop-light.jpg);
   color: var(--very-dark-grayish-blue);
-  height: auto;
+  height: 100%;
 }
 .wrapper.light input[type='checkbox'],
 .wrapper.light button {
@@ -64,7 +77,7 @@ button {
   background-color: var(--very-dark-blue);
   background-image: url(./assets/images/bg-desktop-dark.jpg);
   color: var(--dark-light-grayish-blue);
-  height: auto;
+  height: 100%;
 }
 
 .container {
@@ -74,7 +87,11 @@ button {
   top: 10px;
 }
 
-/* Header Component */
+/*
+=============== 
+Header
+===============
+*/
 header {
   color: white;
   display: flex;
@@ -114,7 +131,11 @@ h1 {
   color: var(--dark-very-dark-grayish-blue-hover);
 }
 
-/* TodoForm Component */
+/*
+=============== 
+TodoForm
+===============
+*/
 .form-control {
   background-color: white;
   width: 100%;
@@ -182,7 +203,11 @@ h1 {
   width: 100%;
 }
 
-/* TodoList Component */
+/*
+=============== 
+TodoList
+===============
+*/
 .todo-list-section {
   background-color: white;
   border-radius: 0.6rem;
@@ -271,7 +296,11 @@ li {
   font-weight: 500;
 }
 
-/* Footer Component */
+/*
+=============== 
+Footer
+===============
+*/
 footer {
   text-align: center;
   font-size: 1.5rem;
