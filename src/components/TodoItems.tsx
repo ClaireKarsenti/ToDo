@@ -27,34 +27,34 @@ const TodoItems: FC<TodoItemsTypes> = ({ tasks, removeItem, setList }) => {
   };
 
   //Drag and drop
-   const dragItem = useRef();
-   const dragOverItem = useRef();
+  const dragItem = useRef();
+  const dragOverItem = useRef();
 
-   const dragStart = (
-     e: { target: { innerHTML: any } },
-     position: undefined
-   ) => {
-     dragItem.current = position;
-     console.log(e.target.innerHTML);
-   };
+  const dragStart = (
+    e: { target: { innerHTML: any } },
+    position: undefined
+  ) => {
+    dragItem.current = position;
+    console.log(e.target.innerHTML);
+  };
 
-   const dragEnter = (
-     e: { target: { innerHTML: any } },
-     position: undefined
-   ) => {
-     dragOverItem.current = position;
-     console.log(e.target.innerHTML);
-   };
+  const dragEnter = (
+    e: { target: { innerHTML: any } },
+    position: undefined
+  ) => {
+    dragOverItem.current = position;
+    console.log(e.target.innerHTML);
+  };
 
-   const drop = (e: any) => {
-     const copyListItems = [...tasks];
-     const dragItemContent = copyListItems[dragItem.current];
-     copyListItems.splice(dragItem.current, 1);
-     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
-     dragItem.current = null;
-     dragOverItem.current = null;
-     setList(copyListItems);
-   };
+  const drop = (e: any) => {
+    const copyListItems = [...tasks];
+    const dragItemContent = copyListItems[dragItem.current];
+    copyListItems.splice(dragItem.current, 1);
+    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+    dragItem.current = null;
+    dragOverItem.current = null;
+    setList(copyListItems);
+  };
 
   return (
     <section>
@@ -72,7 +72,7 @@ const TodoItems: FC<TodoItemsTypes> = ({ tasks, removeItem, setList }) => {
                 className={completed ? 'done' : ''}
                 onDragStart={(e) => dragStart(e, index)}
                 onDragEnter={(e) => dragEnter(e, index)}
-                onDragEnd={(e) => drop(e)}
+                onDragEnd={drop}
                 draggable
               >
                 <label htmlFor={`todoCheckbox-${id}`}>Completed Checkbox</label>

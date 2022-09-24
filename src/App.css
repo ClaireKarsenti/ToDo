@@ -52,6 +52,7 @@ button {
   background-color: var(--very-light-gray);
   background-image: url(./assets/images/bg-desktop-light.jpg);
   color: var(--very-dark-grayish-blue);
+  height: auto;
 }
 .wrapper.light input[type='checkbox'],
 .wrapper.light button {
@@ -63,6 +64,7 @@ button {
   background-color: var(--very-dark-blue);
   background-image: url(./assets/images/bg-desktop-dark.jpg);
   color: var(--dark-light-grayish-blue);
+  height: auto;
 }
 
 .container {
@@ -90,6 +92,7 @@ h1 {
   background: transparent;
   cursor: pointer;
   text-transform: capitalize;
+  font-size: 1.5rem;
 }
 .btn:focus {
   outline: none;
@@ -97,7 +100,11 @@ h1 {
 .btn-container {
   margin-left: 46rem; /* ???????????? */
   position: fixed;
-  /* display: none; */
+  display: none;
+}
+.todo-list:hover .btn-container {
+  /* to display the cross icon only when hover the task */
+  display: block;
 }
 
 .wrapper.dark .btn {
@@ -141,6 +148,7 @@ h1 {
   align-items: center;
   cursor: pointer;
 }
+
 .wrapper.dark span.checkbox {
   border: 0.5px solid var(--dark-very-dark-grayish-blue-hover);
 }
