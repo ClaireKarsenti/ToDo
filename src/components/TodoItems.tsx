@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 
 import CrossIcon from '../assets/icons/icon-cross.svg';
 import CheckIcon from '../assets/icons/icon-check.svg';
@@ -26,6 +26,36 @@ const TodoItems: FC<TodoItemsTypes> = ({ tasks, removeItem, setList }) => {
     localStorage.setItem('list', JSON.stringify(updatedTodos));
   };
 
+  //Drag and drop
+   const dragItem = useRef();
+   const dragOverItem = useRef();
+
+   const dragStart = (
+     e: { target: { innerHTML: any } },
+     position: undefined
+   ) => {
+     dragItem.current = position;
+     console.log(e.target.innerHTML);
+   };
+
+   const dragEnter = (
+     e: { target: { innerHTML: any } },
+     position: undefined
+   ) => {
+     dragOverItem.current = position;
+     console.log(e.target.innerHTML);
+   };
+
+   const drop = (e: any) => {
+     const copyListItems = [...tasks];
+     const dragItemContent = copyListItems[dragItem.current];
+     copyListItems.splice(dragItem.current, 1);
+     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+     dragItem.current = null;
+     dragOverItem.current = null;
+     setList(copyListItems);
+   };
+
   return (
     <section>
       {/* //!!!!!!!!!! A revoir */}
@@ -37,7 +67,14 @@ const TodoItems: FC<TodoItemsTypes> = ({ tasks, removeItem, setList }) => {
           const { id, title, completed } = item;
           return (
             <ul className="todo-list" key={id}>
-              <li key={index} className={completed ? 'done' : ''}>
+              <li
+                key={index}
+                className={completed ? 'done' : ''}
+                onDragStart={(e) => dragStart(e, index)}
+                onDragEnter={(e) => dragEnter(e, index)}
+                onDragEnd={(e) => drop(e)}
+                draggable
+              >
                 <label htmlFor={`todoCheckbox-${id}`}>Completed Checkbox</label>
                 <div className="checkbox-border-wrap">
                   <span className="checkbox" onClick={() => checked(id)}>

@@ -7,7 +7,6 @@
   margin: 0;
   padding: 0;
 }
-
 :root {
   /* Light Theme */
   --very-light-gray: hsl(0, 0%, 98%);
@@ -215,6 +214,7 @@ h1 {
 li {
   border-top: 0.1rem solid var(--very-light-grayish-blue);
   border-bottom-color: var(--dark-very-dark-grayish-blue-hover);
+  cursor: grab;
 }
 .wrapper.dark li {
   border-top: 0.1rem solid var(--dark-very-dark-grayish-blue-hover);
@@ -265,9 +265,15 @@ li {
 
 /* Footer Component */
 footer {
-  justify-self: flex-end;
-  vertical-align: bottom;
   text-align: center;
+  font-size: 1.5rem;
+}
+.link {
+  justify-self: flex-end;
+  text-align: center;
+}
+.drag-drop {
+  color: var(--dark-dark-grayish-blue);
 }
 .attribution,
 a {
