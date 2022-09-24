@@ -68,7 +68,7 @@ const TodoList: FC<TodoListProps> = ({
         )}
       </div>
 
-      {/* For Mobile 
+      {/* For Mobile */}
       <section className="filter-control-for-mobile">
         <div className="control-btn group">
           <TodoFilterButton
@@ -76,7 +76,7 @@ const TodoList: FC<TodoListProps> = ({
             setFilterStatus={setFilterStatus}
           />
         </div>
-      </section>*/}
+      </section>
     </>
   );
 };
