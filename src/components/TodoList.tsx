@@ -30,11 +30,11 @@ const TodoList: FC<TodoListProps> = ({
     setFilterStatus('all');
   };
 
-  const noTodoText = filterStatus === 'completed' ? 'closed task' : 'task';
+  const noTodoText = filterStatus === 'completed' ? 'completed task' : 'task';
 
   return (
     <>
-      <div className="todo-list-section">
+      <section className="todo-list-section">
         {/* The todo list */}
         {list.length < 1 ? (
           <p className="info-text">There's no {noTodoText}.</p>
@@ -50,6 +50,7 @@ const TodoList: FC<TodoListProps> = ({
                   <div>{list.length} items left</div>
                 )}
               </button>
+
               <div className="control-btn group filter-control-for-desktop">
                 <TodoFilterButton
                   filterStatus={filterStatus}
@@ -66,7 +67,7 @@ const TodoList: FC<TodoListProps> = ({
             </div>
           </ul>
         )}
-      </div>
+      </section>
 
       {/* For Mobile */}
       <section className="filter-control-for-mobile">

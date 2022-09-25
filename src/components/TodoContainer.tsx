@@ -14,9 +14,8 @@ import Footer from './Footer.tsx';
 import { DarkModeContext } from '../utils/context/index.tsx';
 
 const TodoContainer = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<any[]>([]);
   const [filterStatus, setFilterStatus] = useState('all');
-  const [filteredTodos, setFilteredTodos] = useState(list);
 
   const removeItem = (id: any) => {
     setList(list.filter((item) => item.id !== id));
@@ -28,13 +27,13 @@ const TodoContainer = () => {
     const handleFilter = () => {
       switch (filterStatus) {
         case 'active':
-          return setFilteredTodos(list.filter((todo) => !todo.done));
+          return setList(list.filter((task) => !task.completed));
 
         case 'completed':
-          return setFilteredTodos(list.filter((todo) => todo.done));
+          return setList(list.filter((task) => task.completed));
 
         default:
-          return setFilteredTodos(list);
+          return setList(list);
       }
     };
     handleFilter();
@@ -57,7 +56,6 @@ const TodoContainer = () => {
             list={list}
             setList={setList}
             removeItem={removeItem}
-            filteredTodos={filteredTodos}
             filterStatus={filterStatus}
             setFilterStatus={setFilterStatus}
           />

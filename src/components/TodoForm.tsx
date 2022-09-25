@@ -15,7 +15,7 @@ const TodoForm: FC<TodoFormTypes> = ({ list, setList }) => {
   const [completed, setCompleted] = useState(false);
   const [title, setTitle] = useState('');
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const newItem = {
       id: new Date().getTime().toString(), //custom id
@@ -31,7 +31,7 @@ const TodoForm: FC<TodoFormTypes> = ({ list, setList }) => {
     <div className="form-control">
       <div className="checkbox-border-wrap">
         <span onClick={() => setCompleted(!completed)} className="checkbox">
-          {completed ? <img src={CheckIcon} alt="done" /> : ''}
+          {completed && <img src={CheckIcon} alt="done" />}
         </span>
       </div>
       <form className="todo-form" onSubmit={handleSubmit}>
