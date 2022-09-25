@@ -37,7 +37,26 @@ const TodoList: FC<TodoListProps> = ({
       <section className="todo-list-section">
         {/* The todo list */}
         {list.length < 1 ? (
-          <p className="info-text">There's no {noTodoText}.</p>
+          <>
+            <p className="info-text">There's no {noTodoText}.</p>
+            <div className="todo-filter">
+              <div className="control-btn group filter-control-for-desktop">
+                <TodoFilterButton
+                  filterStatus={filterStatus}
+                  setFilterStatus={setFilterStatus}
+                />
+              </div>
+            </div>
+            {/* For Mobile */}
+            <section className="filter-control-for-mobile">
+              <div className="control-btn group">
+                <TodoFilterButton
+                  filterStatus={filterStatus}
+                  setFilterStatus={setFilterStatus}
+                />
+              </div>
+            </section>
+          </>
         ) : (
           <ul>
             <TodoItems tasks={list} setList={setList} removeItem={removeItem} />

@@ -172,12 +172,12 @@ TodoForm
   background: var(--dark-very-dark-grayish-blue);
 }
 .wrapper.dark .checkbox-border-wrap:hover {
-background: linear-gradient(
+  background: linear-gradient(
     120deg,
     rgba(87, 221, 255, 1) 0%,
     rgba(192, 88, 243, 1) 100%
-  );}
-
+  );
+}
 
 .checkbox {
   display: flex;
@@ -247,6 +247,10 @@ TodoList
 }
 .todo-list-section .info-text {
   padding: 2.4rem;
+  border-bottom: 0.1rem solid var(--very-light-grayish-blue);
+}
+.wrapper.dark .todo-list-section .info-text {
+  border-bottom: 0.1rem solid var(--dark-very-dark-grayish-blue-hover);
 }
 .todo-list {
   list-style: none;
@@ -307,7 +311,12 @@ TodoList
   color: rgb(24, 99, 238);
   font-weight: 500;
 }
-
+.todo-filter {
+  /*Only when there is no task*/
+  display: flex;
+  justify-content: center;
+  padding: 2.4rem;
+}
 /*
 =============== 
 Footer
