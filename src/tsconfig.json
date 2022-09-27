@@ -1,29 +1,20 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
     "target": "es5",
-    "module": "esnext",
-    "types": ["node"],
-    "moduleResolution": "node",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "typeRoots": ["./src/@types", "./node_modules/@types"],
-    "lib": ["dom", "es2015", "es2017"],
-    "jsx": "react",
-    "sourceMap": true,
-    "strict": true,
-    "resolveJsonModule": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true,
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["src/*"],
-      "@turn/styled": ["src/styled"]
-    }
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["./src/**/*", "./test-utils/**/*", "./__mocks__/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src"]
 }

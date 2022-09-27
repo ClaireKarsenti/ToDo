@@ -64,6 +64,7 @@ button {
   background-repeat: no-repeat;
   background-position: top center;
   background-size: contain;
+  transition: background-image 400ms, background-color 300ms, color 250ms 150ms;
 }
 
 /* Theme LIGHT */
@@ -73,7 +74,6 @@ button {
   color: var(--very-dark-grayish-blue);
   height: 100%;
 }
-.wrapper.light input[type='checkbox'],
 .wrapper.light button {
   color: var(--dark-grayish-blue);
 }
@@ -114,8 +114,9 @@ h1 {
   outline: none;
 }
 .btn-container {
-  margin: -8rem 0 0 46rem; /* ???????????? */
-  position: fixed;
+  /* margin: -8rem 0 0 46rem; /* ???????????? */
+  /* position: fixed; */
+  justify-content: flex-end;
   display: none;
 }
 .todo-list:hover .btn-container {
@@ -125,8 +126,16 @@ h1 {
 
 .wrapper.dark .btn {
   color: var(--dark-dark-grayish-blue);
+  transition: color 400ms;
 }
 .wrapper.dark .btn:hover {
+  color: var(--dark-very-dark-grayish-blue-hover);
+}
+.wrapper.light .btn {
+  color: var(--dark-dark-grayish-blue);
+  transition: color 400ms;
+}
+.wrapper.light .btn:hover {
   color: var(--dark-very-dark-grayish-blue-hover);
 }
 
@@ -158,8 +167,8 @@ TodoForm
 }
 .checkbox-border-wrap {
   padding: 0.1rem;
-  background: var(--very-light-grayish-blue);
   border-radius: 50%;
+  background: var(--very-light-grayish-blue);
 }
 .checkbox-border-wrap:hover {
   background: linear-gradient(
@@ -247,6 +256,7 @@ TodoList
 }
 .todo-list-section .info-text {
   padding: 2.4rem;
+  text-align: center;
   border-bottom: 0.1rem solid var(--very-light-grayish-blue);
 }
 .wrapper.dark .todo-list-section .info-text {
@@ -270,8 +280,7 @@ TodoList
 .wrapper.dark li {
   border-bottom: 0.1rem solid var(--dark-very-dark-grayish-blue-hover);
 }
-.todo-list li label,
-.todo-list li input[type='checkbox'] {
+.todo-list li label {
   display: none;
 }
 .todo-list li.done .checkbox-border-wrap {
@@ -380,6 +389,19 @@ For MOBILE
     -webkit-box-shadow: -1px 5px 20px 10px rgba(197, 200, 241, 0.3);
     -moz-box-shadow: -1px 5px 20px 10px rgba(197, 200, 241, 0.3);
     margin-bottom: 4.8rem;
+  }
+  .todo-filter {
+    display: none;
+  }
+  .todo-list-section .info-text {
+    border-bottom: none;
+  }
+  .wrapper.dark .todo-list-section .info-text {
+    border-bottom: none;
+  }
+
+  section .filter-control-for-mobile {
+    display: none;
   }
 
   /* Dark Theme */

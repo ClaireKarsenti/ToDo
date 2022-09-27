@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom/client';
 
 //@ts-expect-error
 import App from './App.tsx';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals.ts';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
