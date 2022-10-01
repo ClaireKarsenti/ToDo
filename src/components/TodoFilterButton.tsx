@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
 
-import { Todos as TODOS_TYPES } from '../utils/types';
-
 interface TodoFilterControlTypes {
-  todos: TODOS_TYPES[]; //!!!!!!!!!! A revoir;
   filterStatus: any;
   setFilterStatus: any;
 }
@@ -13,7 +10,7 @@ const TodoFilterControl: FC<TodoFilterControlTypes> = ({
   filterStatus,
   setFilterStatus,
 }) => {
-  const handleClick = (status: any) => {
+  const handleClick = (status: string) => {
     setFilterStatus(status);
   };
 

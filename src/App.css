@@ -277,6 +277,9 @@ TodoList
   border-bottom: 0.1rem solid var(--very-light-grayish-blue);
   cursor: grab;
 }
+/* .todo-list li::first-letter {
+  text-transform: capitalize;
+} */
 .wrapper.dark li {
   border-bottom: 0.1rem solid var(--dark-very-dark-grayish-blue-hover);
 }

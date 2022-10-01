@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC } from 'react';
+import { FC, ReactElement, useState, useEffect } from 'react';
 
 // @ts-expect-error
 import TodoItems from './TodoItems.tsx';
@@ -9,11 +9,11 @@ import TodoFilterButton from './TodoFilterButton.tsx';
 import { Todos as TODOS_TYPES } from '../utils/types';
 
 interface TodoListProps {
-  todos: TODOS_TYPES[]; //!!!!!!!!!! A revoir;
-  list: any;
+  list: TODOS_TYPES[];
   setList: any;
   removeItem: any;
-  filterStatus: string;
+  filteredTodos: any;
+  filterStatus: any;
   setFilterStatus: any;
 }
 
@@ -21,9 +21,18 @@ const TodoList: FC<TodoListProps> = ({
   list,
   setList,
   removeItem,
+  filteredTodos,
   filterStatus,
   setFilterStatus,
-}) => {
+}: TodoListProps): ReactElement => {
+  const [leftTodoCount, setLeftTodoCount] = useState(0);
+
+  //To decrease the number of items in the list when some are checked
+  useEffect(() => {
+    const unCompletedTodos = list.filter((todo) => !todo.completed);
+    setLeftTodoCount(unCompletedTodos.length);
+  }, [list]);
+
   //To delete all the completed tasks
   const clearCompleted = () => {
     setList(list.filter((todo: { completed: any }) => !todo.completed));
@@ -36,7 +45,7 @@ const TodoList: FC<TodoListProps> = ({
     <>
       <section className="todo-list-section">
         {/* The todo list */}
-        {list.length < 1 ? (
+        {filteredTodos?.length < 1 ? (
           <>
             <p className="info-text">There's no {noTodoText}.</p>
             <div className="todo-filter">
@@ -59,14 +68,19 @@ const TodoList: FC<TodoListProps> = ({
           </>
         ) : (
           <ul>
-            <TodoItems tasks={list} setList={setList} removeItem={removeItem} />
+            <TodoItems
+              list={list}
+              setList={setList}
+              removeItem={removeItem}
+              filteredTodos={filteredTodos}
+            />
 
             <div className="todo-footer">
               <button className="btn">
-                {list.length === 1 ? (
-                  <div>{list.length} item left</div>
+                {leftTodoCount <= 1 ? (
+                  <div>{leftTodoCount} item left</div>
                 ) : (
-                  <div>{list.length} items left</div>
+                  <div>{leftTodoCount} items left</div>
                 )}
               </button>
 

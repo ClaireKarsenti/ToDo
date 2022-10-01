@@ -6,8 +6,7 @@ import CheckIcon from '../assets/icons/icon-check.svg';
 import { Todos as TODOS_TYPES } from '../utils/types';
 
 interface TodoFormTypes {
-  todos: TODOS_TYPES[]; //!!!!!!!!!! A revoir;
-  list: any;
+  list: TODOS_TYPES[];
   setList: any;
 }
 

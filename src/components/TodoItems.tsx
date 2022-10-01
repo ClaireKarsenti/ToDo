@@ -7,15 +7,20 @@ import CheckIcon from '../assets/icons/icon-check.svg';
 import { Todos as TODOS_TYPES } from '../utils/types';
 
 interface TodoItemsTypes {
-  todos: TODOS_TYPES[]; //!!!!!!!!!! A revoir;
-  tasks: any;
+  list: TODOS_TYPES[];
   removeItem: any;
   setList: any;
+  filteredTodos: any;
 }
 
-const TodoItems: FC<TodoItemsTypes> = ({ tasks, removeItem, setList }) => {
+const TodoItems: FC<TodoItemsTypes> = ({
+  list,
+  removeItem,
+  setList,
+  filteredTodos,
+}) => {
   const checked = (id: any) => {
-    const updatedTodos = [...tasks];
+    const updatedTodos = [...list];
     // eslint-disable-next-line array-callback-return
     updatedTodos.find((item) => {
       if (item.id === id) {
@@ -47,7 +52,7 @@ const TodoItems: FC<TodoItemsTypes> = ({ tasks, removeItem, setList }) => {
   };
 
   const drop = (e: any) => {
-    const copyListItems = [...tasks];
+    const copyListItems = [...list];
     const dragItemContent = copyListItems[dragItem.current];
     copyListItems.splice(dragItem.current, 1);
     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
@@ -58,11 +63,10 @@ const TodoItems: FC<TodoItemsTypes> = ({ tasks, removeItem, setList }) => {
 
   return (
     <section>
-      {/* //!!!!!!!!!! A revoir */}
-      {tasks?.map(
+      {filteredTodos?.map(
         (
           item: { id: string; title: string; completed: boolean },
-          index: React.Key | null | undefined
+          index: React.Key
         ) => {
           const { id, title, completed } = item;
           return (

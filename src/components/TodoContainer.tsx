@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, FC } from 'react';
 
 //COMPONENTS
 // @ts-expect-error
@@ -12,32 +12,28 @@ import Header from './Header.tsx';
 import Footer from './Footer.tsx';
 // @ts-expect-error
 import { DarkModeContext } from '../utils/context/index.tsx';
+import { Todos as TODOS_TYPES } from '../utils/types';
 
-const TodoContainer = () => {
-  const [list, setList] = useState<any[]>([]);
-  const [filterStatus, setFilterStatus] = useState('all');
+interface TodoContainerTypes {
+  list: TODOS_TYPES[];
+  setList: any;
+  filterStatus: any;
+  filteredTodos: any;
+  setFilterStatus: any;
+}
 
+const TodoContainer: FC<TodoContainerTypes> = ({
+  list,
+  setList,
+  filterStatus,
+  filteredTodos,
+  setFilterStatus,
+}) => {
   const removeItem = (id: any) => {
-    setList(list.filter((item) => item.id !== id));
+    setList(list.filter((item: any) => item.id !== id));
   };
 
   const { darkMode } = useContext(DarkModeContext);
-
-  useEffect(() => {
-    const handleFilter = () => {
-      switch (filterStatus) {
-        case 'active':
-          return setList(list.filter((task) => !task.completed));
-
-        case 'completed':
-          return setList(list.filter((task) => task.completed));
-
-        default:
-          return setList(list);
-      }
-    };
-    handleFilter();
-  }, [list, filterStatus]);
 
   // useEffect(() => {
   //   let list = localStorage.getItem('list');
@@ -57,6 +53,7 @@ const TodoContainer = () => {
             setList={setList}
             removeItem={removeItem}
             filterStatus={filterStatus}
+            filteredTodos={filteredTodos}
             setFilterStatus={setFilterStatus}
           />
         </main>
