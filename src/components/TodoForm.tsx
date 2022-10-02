@@ -21,6 +21,7 @@ const TodoForm: FC<TodoFormTypes> = ({ list, setList }) => {
       title,
       completed,
     };
+  
     // Every time a new item is added to the list, the list is updated accordingly
     setList([...list, newItem]);
     setTitle('');

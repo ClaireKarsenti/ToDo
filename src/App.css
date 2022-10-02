@@ -114,9 +114,8 @@ h1 {
   outline: none;
 }
 .btn-container {
-  /* margin: -8rem 0 0 46rem; /* ???????????? */
-  /* position: fixed; */
-  justify-content: flex-end;
+  margin-left: auto; /* to align on the right the cross icon */
+  margin-right: 0; /* to align on the right the cross icon */
   display: none;
 }
 .todo-list:hover .btn-container {
