@@ -6,8 +6,7 @@ import CheckIcon from '../assets/icons/icon-check.svg';
 import { Todos as TODOS_TYPES } from '../utils/types';
 
 interface TodoFormTypes {
-  todos: TODOS_TYPES[]; //!!!!!!!!!! A revoir;
-  list: any;
+  list: TODOS_TYPES[];
   setList: any;
 }
 
@@ -22,6 +21,7 @@ const TodoForm: FC<TodoFormTypes> = ({ list, setList }) => {
       title,
       completed,
     };
+  
     // Every time a new item is added to the list, the list is updated accordingly
     setList([...list, newItem]);
     setTitle('');
@@ -30,7 +30,11 @@ const TodoForm: FC<TodoFormTypes> = ({ list, setList }) => {
   return (
     <div className="form-control">
       <div className="checkbox-border-wrap">
-        <span onClick={() => setCompleted(!completed)} className="checkbox">
+        <span
+          onClick={() => setCompleted(!completed)}
+          className="checkbox"
+          data-testid="checkbox"
+        >
           {completed && <img src={CheckIcon} alt="done" />}
         </span>
       </div>

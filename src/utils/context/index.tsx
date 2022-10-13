@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useState, createContext } from 'react';
 
 
-interface DarkModeProvider {
+interface DarkModeProviderTypes {
   children: any;
 }
 
@@ -13,8 +13,7 @@ export const defaultState = {
 
 export const DarkModeContext = createContext(defaultState);
 
-// eslint-disable-next-line @typescript-eslint/no-redeclare
-export const DarkModeProvider: React.FC<DarkModeProvider> = ({ children }) => {
+export const DarkModeProvider: React.FC<DarkModeProviderTypes> = ({ children }) => {
   const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => {

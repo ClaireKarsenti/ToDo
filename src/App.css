@@ -102,6 +102,7 @@ h1 {
   font-size: 3.6rem;
   font-weight: 700;
   letter-spacing: 1.4rem;
+  
 }
 .btn {
   border: none;
@@ -114,9 +115,8 @@ h1 {
   outline: none;
 }
 .btn-container {
-  /* margin: -8rem 0 0 46rem; /* ???????????? */
-  /* position: fixed; */
-  justify-content: flex-end;
+  margin-left: auto; /* to align on the right the cross icon */
+  margin-right: 0; /* to align on the right the cross icon */
   display: none;
 }
 .todo-list:hover .btn-container {
@@ -277,6 +277,9 @@ TodoList
   border-bottom: 0.1rem solid var(--very-light-grayish-blue);
   cursor: grab;
 }
+/* .todo-list li::first-letter {
+  text-transform: capitalize;
+} */
 .wrapper.dark li {
   border-bottom: 0.1rem solid var(--dark-very-dark-grayish-blue-hover);
 }
@@ -345,6 +348,7 @@ footer {
 .attribution,
 a {
   color: var(--dark-dark-grayish-blue);
+  cursor: pointer;
 }
 a:link {
   text-decoration: none;
